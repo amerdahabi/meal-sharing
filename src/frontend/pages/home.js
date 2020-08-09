@@ -7,9 +7,10 @@ function searchHandler() {
     .then((response) => response.json())
     .then((data) => {
       const mealList = document.querySelector(".meal-list");
-      mealList.innerHTML = data.map((meal) => {
-        console.log(meal.title);
-        return `<div class="card">
+      mealList.innerHTML = data
+        .map((meal) => {
+          console.log(meal.title);
+          return `<div class="card">
           <div class="card-image">
             <figure class="image is-4by3">
               <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
@@ -24,16 +25,16 @@ function searchHandler() {
               </div>
               <div class="media-content">
                 <p class="title is-4">${meal.title}</p>
-                <p class="subtitle is-6">${meal.description}</p>
+                <p class="subtitle is-6">${meal.price} DKK</p>
               </div>
             </div>
             <div class="content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Phasellus nec iaculis mauris.
+             ${meal.description}
             </div>
           </div>
         </div>`;
-      });
+        })
+        .join("");
     });
 }
 
@@ -47,6 +48,7 @@ window.handleHomeRequest = () => {
         <div class="nav-left nav-menu">
           <a href="meals" class="nav-item" data-navigo>All Meals</a>
           <a href="add-meal" class="nav-item" data-navigo>Add Meal</a> 
+          <a href="meal/1" class="nav-item" data-navigo>Meal</a>
         </div> 
         <div class="field has-addons">
         <p class="control">
@@ -58,13 +60,13 @@ window.handleHomeRequest = () => {
       </div> 
       </nav>      
       <div class="meals-container">
-        <ul class="meal-list"> </ul>    
+        <div class="meal-list"> </div>    
       </div>
       <div class="footer-div">
         <div class="card footer">
           <div class="card-content">
             <p class="title">
-              Meal App Sharing footer @ Amer Dahabi
+              Meal Sharing App @ Amer Dahabi
             </p>
           </div>
           <footer class="card-footer">

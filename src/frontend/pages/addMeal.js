@@ -1,4 +1,4 @@
-function createMeal() {
+function addMeal() {
   const form = document.querySelector("form");
   const title = form.elements[0].value;
   const description = form.elements[1].value;
@@ -46,7 +46,7 @@ window.handleAddMealRequest = () => {
          <h1 class="title header-title">Let's Create Meal!</h1>
         </div>
           <nav class="nav">
-            <div class="nav-right nav-menu">
+            <div class="nav-left nav-menu">
               <a href="/" class="nav-item" data-navigo>Home</a>
               <a href="meals" class="nav-item" data-navigo>All Meals</a>
             </div>
@@ -64,7 +64,7 @@ window.handleAddMealRequest = () => {
               Maximum reservations: *<input class="input" type="number" name="max_reservation" required>
               <br>
               Price: *<input class="input" type="number" name="price" step="any" required><br><br>
-              <button class="button is-primary" type="button" onclick="createMeal()">Create Meal</button>
+              <button class="button is-primary" type="button" onclick="addMeal()">Create Meal</button>
             </form>
           </div>  
       </div>

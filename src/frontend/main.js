@@ -5,3 +5,4 @@ var router = new Navigo(root);
 router.on("/", window.handleHomeRequest).resolve();
 router.on("/meals", window.handleMealsRequest).resolve();
 router.on("/add-meal", window.handleAddMealRequest).resolve();
+router.on("/meal/:id", window.handleDeleteMealRequest).resolve();
