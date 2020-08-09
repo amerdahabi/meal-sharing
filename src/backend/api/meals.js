@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
       location: req.body.location,
       max_reservation: req.body.max_reservation,
       price: req.body.price,
-      created_date: req.body.created_date,
+      created_date: knex.fn.now(),
     });
     res.json(addMeal);
   } catch (error) {
