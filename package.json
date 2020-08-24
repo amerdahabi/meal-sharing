@@ -9,7 +9,7 @@
     "start": "npm run server",
     "server": "nodemon ./src/backend/index.js"
   },
-  "author": "Benjamin Hughes",
+  "author": "Amer Dahabi",
   "license": "MIT",
   "dependencies": {
     "@types/xml": "^1.0.3",

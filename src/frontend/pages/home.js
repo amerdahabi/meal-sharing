@@ -1,90 +1,75 @@
-function searchHandler() {
-  const value = document.querySelector(".input").value;
-  if (value.length === 0) {
-    return;
-  }
-  fetch(`/api/meals/?title=${value}`)
-    .then((response) => response.json())
-    .then((data) => {
-      const mealList = document.querySelector(".meal-list");
-      mealList.innerHTML = data
-        .map((meal) => {
-          console.log(meal.title);
-          return `<div class="card">
-          <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title is-4">${meal.title}</p>
-                <p class="subtitle is-6">${meal.price} DKK</p>
-              </div>
-            </div>
-            <div class="content">
-             ${meal.description}
-            </div>
-          </div>
-        </div>`;
-        })
-        .join("");
-    });
-}
-
 window.handleHomeRequest = () => {
   document.body.innerHTML = `
-    <div class="container">  
-      <div class="header">
-        <h1 class="title header-title">Meal Sharing</h1>
-      </div>
-      <nav class="nav">
+    <div class="container"> 
+      <nav class="navbar">
         <div class="nav-left nav-menu">
           <a href="meals" class="nav-item" data-navigo>All Meals</a>
           <a href="add-meal" class="nav-item" data-navigo>Add Meal</a> 
           <a href="meal/1" class="nav-item" data-navigo>Meal</a>
-        </div> 
-        <div class="field has-addons">
-        <p class="control">
-          <input type="text" class="input" placeholder="Search meal...">
-        </p>
-        <p class="control">
-          <button class="button is-primary" type="button" onclick="searchHandler()">Search</button>
-        </p>
-      </div> 
-      </nav>      
-      <div class="meals-container">
-        <div class="meal-list"> </div>    
-      </div>
-      <div class="footer-div">
-        <div class="card footer">
-          <div class="card-content">
-            <p class="title">
-              Meal Sharing App @ Amer Dahabi
-            </p>
-          </div>
-          <footer class="card-footer">
-            <p class="card-footer-item">
-              <span>
-                <a href="https://www.linkedin.com/in/amer-dahabi-2193131aa/"><i class="fa fa-linkedin"></i></a>
-              </span>
-            </p>
-            <p class="card-footer-item">
-              <span>
-                <a href="https://github.com/amerdahabi"><i class="fa fa-github"></i></a>
-              </span>
-            </p>
-          </footer>
         </div>
-      </div>  
+      </nav>
+      <div class="header">
+        <h1 class="title header-title">Meal Sharing</h1>
+          <h2 class="subtitle is-transparent">development ongoing</h2>
+      </div>
+      <section class="section">
+        <div class="container py-4">
+          <h2 class="title has-text-centered mb-6">New Meals</h2>
+          <div class="columns is-multiline meal-list">                      
+          </div>
+        </div>
+      </section>
+      <footer class="footer">
+        <div class="container">
+          <div class="columns">
+            <div class="column is-4 has-text-centered is-hidden-tablet">
+              <a class="title is-4" href="#">Amer Dahabi</a>
+            </div>
+            <div class="column is-4">
+              <div class="level">
+                <a class="level-item" href="https://www.linkedin.com/in/amer-dahabi-2193131aa/">LinkedIN</a>
+                <a class="level-item" href="https://github.com/amerdahabi">Github</a>
+              </div>
+            </div>
+            <div class="column is-4 has-text-centered is-hidden-mobile">
+              <a class="title is-4" href="#">AM-DA</a>
+            </div>
+            <div class="column is-4 has-text-right">
+              <div class="level">
+                <a class="level-item" href="https://amerdahabi.herokuapp.com/">Portfolio</a>
+                <a class="level-item" href="#">ICO</a>
+              </div>
+            </div>
+          </div>
+          <p class="subtitle has-text-centered is-6">© 2020 AM-DA.</p>
+        </div>
+      </footer>
     </div>
     `;
+
+  fetch(`/api/meals/`)
+    .then((response) => response.json())
+    .then((data) => {
+      const mealList = document.querySelector(".meal-list");
+      mealList.innerHTML = data
+        .slice(4, 7)
+        .map((meal) => {
+          console.log(meal.title);
+          return `
+          <div class="column is-6 is-4-desktop">
+            <div class="card" style="height: 100%">
+              <div class="card-image"><a href="#"><img src="../images/${meal.title}.jpg" alt=""></a>
+              </div>
+              <div class="card-content">
+                <span class="is-size-7">${meal.price} DKK</span>
+                <h5 class="title is-5"><a href="#">${meal.title}</a></h5>
+                <a class="button is-primary" href="#">Read more</a>
+              </div>
+            </div>
+          </div>`;
+        })
+        .join("");
+    });
 
   // if any links are added to the dom, use this function
   // make the router handle those links.

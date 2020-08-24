@@ -41,34 +41,34 @@ function addMeal() {
 
 window.handleAddMealRequest = () => {
   document.body.innerHTML = `
-      <div class="container">
-        <div class="header">
-         <h1 class="title header-title">Let's Create Meal!</h1>
+    <div class="container">
+      <nav class="navbar">
+        <div class="nav-left nav-menu">
+          <a href="/" class="nav-item" data-navigo>Home</a> 
+          <a href="meals" class="nav-item" data-navigo>All Meals</a>
+          <a href="meal/1" class="nav-item" data-navigo>Meal</a>
         </div>
-          <nav class="nav">
-            <div class="nav-left nav-menu">
-              <a href="/" class="nav-item" data-navigo>Home</a>
-              <a href="meals" class="nav-item" data-navigo>All Meals</a>
-            </div>
-          </nav>    
-          <div class="form">
-            <form>
-              Title: *<input class="input" type="text" name="title" required>
-              <br>
-              Description: *<input class="input" type="text" name="description" required>
-              <br>
-              Location: *<input class="input" type="text" name="location" required>
-              <br>
-              When: *<input class="input" type="datetime-local" name="when" value = "2020-08-01T12:00" required>
-              <br>
-              Maximum reservations: *<input class="input" type="number" name="max_reservation" required>
-              <br>
-              Price: *<input class="input" type="number" name="price" step="any" required><br><br>
-              <button class="button is-primary" type="button" onclick="addMeal()">Create Meal</button>
-            </form>
-          </div>  
-      </div>
-      `;
+      </nav>
+      <div class="header">
+        <h1 class="title header-title">Let's Add Meal!</h1>
+      </div>    
+      <div class="form">
+        <form>
+          Title: *<input class="input" type="text" name="title" required>
+          <br>
+          Description: *<input class="input" type="text" name="description" required>
+          <br>
+          Location: *<input class="input" type="text" name="location" required>
+          <br>
+          When: *<input class="input" type="datetime-local" name="when" value = "2020-08-01T12:00" required>
+          <br>
+          Maximum reservations: *<input class="input" type="number" name="max_reservation" required>
+          <br>
+          Price: *<input class="input" type="number" name="price" step="any" required><br><br>
+          <button class="button is-primary" type="button" onclick="addMeal()">Create Meal</button>
+        </form>
+      </div>  
+    </div>`;
 
   router.updatePageLinks();
 };
