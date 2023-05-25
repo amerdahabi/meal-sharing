@@ -5,6 +5,5 @@ built with:
 
 JavaScript, Node.Js, express, MySQL, KnexJS, HTML/CSS, Bulma
 
-vist site: https://app-meal-sharing.herokuapp.com/
 
 
